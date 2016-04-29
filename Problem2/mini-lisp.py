@@ -33,10 +33,17 @@ class MiniLisp(cmd.Cmd):     # See https://docs.python.org/2/library/cmd.html
         """Called on an input line when the command prefix is not recognized.
            In that case we execute the line as Python code.
         """
+        # from class
+        '''
         result = yacc.parse(line)
         s = lisp_str(result)
         if s != 'nil':
             print s
+        '''
+        result = yacc.parse(line)
+        print "result is: ", result
+        import lis
+        print lis.eval(result)
 
 if __name__ == '__main__':
         ml = MiniLisp()
