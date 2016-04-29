@@ -226,6 +226,7 @@ def p_call(p):
     p[0] = lisp_eval(p[2], p[3])   
 
 # alter simbol
+# allows for variable to be stored and implemented
 def p_atom_simbol(p):
     'atom : SIMB'
     try:

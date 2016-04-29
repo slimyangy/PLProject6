@@ -8,6 +8,8 @@ import ply.lex as lex
 
 # List of token names.
 # token names used to represent different inputs from command line
+### must add in LET and IF into tokens
+
 tokens = ('QUOTE', 'SIMB', 'NUM', 'LPAREN', 'RPAREN', \
 'NIL', 'TRUE', 'FALSE', 'TEXT', 'LET', 'IF')
 
