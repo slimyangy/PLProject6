@@ -4,14 +4,7 @@
 
 ###test cases:
 
-(let (a 1))
-> just assigns a with value 1
-> retains its value until used in "(let (x 1)(+ x 1))"-like format
-
-a
-> returns 1
-
-(let (fred 12) (fred 1))
+(let (fred 12) (+fred 1))
 > variable "fred" value does get cleared
 > returns 13
 
