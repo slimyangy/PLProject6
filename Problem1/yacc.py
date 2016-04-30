@@ -10,7 +10,7 @@ DEBUG = True
 
 #############
 name = {}
-var = {}
+variables = {}
 
 def cons(l):
     return [l[0]] + l[1]
@@ -79,9 +79,9 @@ name['*'] = mult
 # added a division function
 def div(l):
     if l[1] == 0:
-        print "0 in denominator"
+        print "0 in denominator you noob"
     else:
-        return l[0] / l[1]
+        return l[0] / float(l[1])
 
 name['/'] = div
 
@@ -159,8 +159,8 @@ def p_exp_qlist(p):
 def p_exp_doublecall(p):
     'exp : LPAREN call call RPAREN'
     p[0] = p[3]
-    # clear the variable as per instructions
-    var.clear()
+    # clear the variable as per instructions when this type of call is used
+    variables.clear()
 
 def p_exp_call(p):
     'exp : call'
@@ -210,8 +210,14 @@ def p_item_empty(p):
 # refer back to the lexer
 
 def p_let(p):
+    'call : LPAREN LET LPAREN SIMB NUM RPAREN RPAREN'
+    variables[p[4]] = p[5]
+    print p[4], "->", p[5]
+
+def p_let2(p):
     'call : LET LPAREN SIMB NUM RPAREN'
-    var[p[3]] = p[4]
+    variables[p[3]] = p[4]
+    print p[3], "->", p[4]
 
 def p_if(p):
     '''call : LPAREN IF bool NUM NUM RPAREN'''
@@ -222,15 +228,14 @@ def p_if(p):
 
 def p_call(p):
     'call : LPAREN SIMB items RPAREN'
-    if DEBUG: print "Calling", p[2], "with", p[3] 
+    if DEBUG: print "Calling", p[2], "with", p[3]
     p[0] = lisp_eval(p[2], p[3])   
 
 # alter simbol
-# allows for variable to be stored and implemented
 def p_atom_simbol(p):
     'atom : SIMB'
     try:
-        p[0] = var[p[1]]
+        p[0] = variables[p[1]]
     except LookupError:
         p[0] = p[1]
 
