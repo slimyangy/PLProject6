@@ -1,8 +1,8 @@
 # PLProject6
 
-Problem 1:
+#Problem 1:
 
-test cases:
+#test cases:
 
 (let (a 1))
 > just assigns a with value 1
@@ -43,4 +43,11 @@ extra notes:
 > +, -, /, * all supported
 > variable clearing done as specified
 
-Problem 2:
+#Problem 2:
+
+#test case:
+
+(car '(1 2 3))
+
+extra notes:
+> we just did what professor Cannata did in class
