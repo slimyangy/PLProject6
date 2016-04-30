@@ -11,6 +11,13 @@
 fred
 > returns fred
 
+(let (a 1))
+> just assigns a with value 1
+> retains its value until used in "(let (x 1)(+ x 1))"-like format
+
+a
+> returns 1
+
 (+ a 3)
 > returns 4
 
