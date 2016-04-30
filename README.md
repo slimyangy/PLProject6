@@ -4,7 +4,7 @@
 
 ###test cases:
 
-(let (fred 12) (+fred 1))
+(let (fred 12) (+ fred 1))
 > variable "fred" value does get cleared
 > returns 13
 
